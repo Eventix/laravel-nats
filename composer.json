@@ -1,0 +1,28 @@
+{
+    "name": "eventix/laravel-nats",
+    "description": "Package which makes talking to a nats.io instance easy",
+    "type": "library",
+    "require": {
+        "php": ">=7.1.0",
+        "repejota/nats": "^0.8"
+    },
+    "authors": [
+        {
+            "name": "Mart Pluijmaekers",
+            "email": "mart@eventix.nl"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Eventix\\PubSub\\": "src"
+        }
+    },
+    "minimum-stability": "stable",
+    "extra": {
+        "laravel": {
+            "aliases": {
+                "PubSub": "Eventix\\PubSub\\PubSubFacade"
+            }
+        }
+    }
+}
