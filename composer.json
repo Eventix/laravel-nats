@@ -17,6 +17,7 @@
             "Eventix\\PubSub\\": "src"
         }
     },
+    "minimum-stability": "dev",
     "extra": {
         "laravel": {
             "aliases": {
