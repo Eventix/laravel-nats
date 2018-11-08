@@ -3,8 +3,9 @@
     "description": "Package which makes talking to a nats.io instance easy",
     "type": "library",
     "require": {
-        "php": ">=7.1.0",
-        "repejota/nats": "dev-develop"
+        "php": ">=7.2.0",
+        "repejota/nats": "dev-develop",
+        "tuupke/laravel-finalizer": "^1.0.0"
     },
     "authors": [
         {
