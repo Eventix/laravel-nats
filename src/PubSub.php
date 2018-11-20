@@ -90,7 +90,8 @@ class PubSub {
      * @param String $data The data which will be sent
      */
     public function publish(String $subj, $data = null, $collect = true) {
-        if ($collect)
+        global $app;
+        if ($collect && !$app->runningInConsole())
             return $this->append($subj, $data);
 
         if ($this->client === true)
