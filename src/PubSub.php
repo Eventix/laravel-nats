@@ -90,9 +90,10 @@ class PubSub {
      * @param String $data The data which will be sent
      */
     public function publish(String $subj, $data = null, $collect = true) {
-        global $app;
-        if ($collect && !$app->runningInConsole())
+        if ($collect && !\App::runningInConsole())
             return $this->append($subj, $data);
+
+        $this->ensureClient();
 
         if ($this->client === true)
             return;
@@ -133,11 +134,11 @@ class PubSub {
                 $this->ensureClient();
                 if ($this->client === true) {
                     \Log::error("Client is true");
+
                     return;
                 } else if (is_null($this->client)) {
                     \Log::error("Client is true");
                     throw new \Exception("not booted");
-
                 }
 
                 $res = [];
@@ -156,7 +157,7 @@ class PubSub {
                 }
 
                 foreach ($res as $send) {
-                    \Log::info("About to send ".$send[0]);
+                    \Log::info("About to send " . $send[0]);
                     try {
                         $this->client->publish($send[0], $this->encode($send[1]));
                     } catch (\Exception $e) {
@@ -172,7 +173,7 @@ class PubSub {
         $this->vals[$subj][] = $data;
     }
 
-    private function encode($data):String {
+    private function encode($data): String {
         if (is_string($data))
             return $data;
 
