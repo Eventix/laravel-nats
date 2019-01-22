@@ -152,8 +152,7 @@ class PubSub {
                         }
                     }
 
-                    if (count($agg))
-                        $res[] = [$s, $agg];
+                    $res[] = [$s, $agg];
                 }
 
                 foreach ($res as $send) {
